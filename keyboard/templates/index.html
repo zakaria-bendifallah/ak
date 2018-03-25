@@ -1,0 +1,117 @@
+﻿
+{% extends "main_template.html" %}
+
+{% block dynamic_js %}
+
+var keys_map={
+   "$" : "dal", "^" : "jim", "p" : "7a", 
+   "o" : "5a",  "i" : "ha",  "u" : "3in",
+   "y" : "ghin","t" : "faa", "r" : "9af",
+   "e" : "tha", "z" : "dda", "a" : "sad",   
+   "*" : "dhal", "ù": "tta", "m" : "kaf", 
+   "l" : "mim", "k" : "noun", "j" : "taa", 
+   "h" : "alif","g" : "lam", "f" : "baa", 
+   "d" : "yaa",  "s": "sin", "q" : "chin", 
+   "!" : "dha", ":" : "zin", ";" : "waw", 
+   "," : "taamar", "n": "yaae", "b" :"aliflam",
+   "v" : "raa", "c" : "hamzawaw", "x": "hamza", 
+   "w" : "hamzayaa"," ": "kspace"
+};
+
+var key_ids= [
+      "dal", "jim", "7a", "5a", "ha", 
+      "3in", "ghin", "faa", "9af", "tha", 
+      "dda", "sad", "dhal", "tta", "kaf", 
+      "mim", "noun", "taa", "alif", "lam", 
+      "baa", "yaa", "sin", "chin", "dha", 
+      "zin", "waw", "taamar", "yaae", "aliflam",
+      "raa", "hamzawaw", "hamza", "hamzayaa",
+      "fassila", "kspace"
+];
+ 
+function canvas_write(key_id){
+    var $canvas = $("#tcanvas");
+    var curValue = $canvas.val();
+    var newValue = curValue + $("#"+key_id).text();
+    $canvas.val(newValue); 
+}
+   
+$(document).ready(function() {
+    $("#tcanvas").on("input", function(){
+       var curVal = $(this).val();
+       lastChar = curVal[curVal.length - 1];
+       var key_button =keys_map[lastChar];
+       if (key_button != null){
+          $("#"+key_button).trigger("mouseenter");
+          console.log("executed "+ $("#"+key_button).attr('class'));
+       }
+    });
+    
+    for (var i=0; i< key_ids.length; i++)
+    {
+        console.log(key_ids[i]);
+        $('#'+key_ids[i]).on("mouseenter", function(){
+            console.log("hover triggered");
+            $(this).css({"background":"#36367d","color":"white"}); 
+            $(this).delay(400).queue(function (next) {
+                 $(this).css({"background":"white","color":"black"}); 
+                 next();
+            });
+        });
+    }
+});
+{% endblock %}
+
+{% block main_content %}
+
+    <textarea id="tcanvas" rows="10" cols="65"></textarea> 
+    <div class="lwm" >
+      <a id="dal" onClick="canvas_write(this.id)" href="#">د</a>
+      <a id="jim" onClick="canvas_write(this.id)" href="#">ج</a>
+      <a id="7a" onClick="canvas_write(this.id)" href="#">ح</a>
+      <a id="5a" onClick="canvas_write(this.id)" href="#">خ</a>
+      <a id="ha" onClick="canvas_write(this.id)" href="#">ه</a>
+      <a id="3in" onClick="canvas_write(this.id)" href="#">ع</a>
+      <a id="ghin" onClick="canvas_write(this.id)" href="#">غ</a>
+      <a id="faa" onClick="canvas_write(this.id)" href="#">ف</a>
+      <a id="9af" onClick="canvas_write(this.id)" href="#">ق</a>
+      <a id="tha" onClick="canvas_write(this.id)" href="#">ث</a>
+      <a id="dda" onClick="canvas_write(this.id)" href="#">ض</a>
+      <a id="sad" onClick="canvas_write(this.id)" href="#">ص</a>
+      <br>
+      <br>
+      <a id="dhal" onClick="canvas_write(this.id)" href="#">ذ</a>
+      <a id="tta" onClick="canvas_write(this.id)" href="#">ط</a>
+      <a id="kaf" onClick="canvas_write(this.id)" href="#">ك</a>
+      <a id="mim" onClick="canvas_write(this.id)" href="#">م</a>
+      <a id="noun" onClick="canvas_write(this.id)" href="#">ن</a>
+      <a id="taa" onClick="canvas_write(this.id)" href="#">ت</a>
+      <a id="alif" onClick="canvas_write(this.id)" href="#">ا</a>
+      <a id="lam" onClick="canvas_write(this.id)" href="#">ل</a>
+      <a id="baa" onClick="canvas_write(this.id)" href="#">ب</a>
+      <a id="yaa" onClick="canvas_write(this.id)" href="#">ي</a>
+      <a id="sin" onClick="canvas_write(this.id)" href="#">س</a>
+      <a id="chin" onClick="canvas_write(this.id)" href="#">ش</a>
+      <br>
+      <br>
+      <a id="dha" onClick="canvas_write(this.id)" href="#">ظ</a>
+      <a id="zin" onClick="canvas_write(this.id)" href="#">ز</a>
+      <a id="waw" onClick="canvas_write(this.id)" href="#">و</a>
+      <a id="taamar" onClick="canvas_write(this.id)" href="#">ة</a>
+      <a id="yaae" onClick="canvas_write(this.id)" href="#">ى</a>
+      <a id="aliflam" onClick="canvas_write(this.id)" href="#">ﻻ</a>
+      <a id="raa" onClick="canvas_write(this.id)" href="#">ر</a>
+      <a id="hamzawaw" onClick="canvas_write(this.id)" href="#">ؤ</a>
+      <a id="hamza" onClick="canvas_write(this.id)" href="#">ء</a>
+      <a id="hamzayaa" onClick="canvas_write(this.id)" href="#">ئ</a>
+      <br>
+      <br>
+      <a id="erase" onClick="canvas_write(this.id)" href="#"><i class="fas fa-eraser"></i></a>
+      <a id="fassila" onClick="canvas_write(this.id)" href="#">,</a>
+      <a id="kspace" onClick="canvas_write(this.id)" href="#"> </a>
+      <a id="no9ta" onClick="canvas_write(this.id)" href="#">.</a>
+      
+    </div>	
+{% endblock %}
+      
+
