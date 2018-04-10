@@ -1,0 +1,21 @@
+{% extends "main_template.html" %}
+
+
+{% block dynamic_js %}
+
+{% endblock %}
+
+{% block main_content %}
+<form class="kontact-form">
+<label for="kname-input" class="kontact-label">* الاسم</label>
+<input id="kname-input" type="text" class="kontact-input"  name="الاسم"/>
+<br/>
+<label for="kmail-input" class="kontact-label">البريد الالكتروني</label>
+<input id="kmail-input" type="text" class="kontact-input"  name="البريد الالكتروني"/>
+<br/>
+<label for="kmessage-input" class="kontact-label">الرسالة</label>
+<textarea id="kmessage-input" class="kontact-input" rows="5" cols="30"></textarea>
+<br/>
+<input id="ksubmit" type="submit" value="ارسل">
+</form>
+{% endblock %}

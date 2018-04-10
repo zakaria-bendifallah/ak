@@ -3,115 +3,406 @@
 
 {% block dynamic_js %}
 
-var keys_map={
-   "$" : "dal", "^" : "jim", "p" : "7a", 
-   "o" : "5a",  "i" : "ha",  "u" : "3in",
-   "y" : "ghin","t" : "faa", "r" : "9af",
-   "e" : "tha", "z" : "dda", "a" : "sad",   
-   "*" : "dhal", "ù": "tta", "m" : "kaf", 
-   "l" : "mim", "k" : "noun", "j" : "taa", 
-   "h" : "alif","g" : "lam", "f" : "baa", 
-   "d" : "yaa",  "s": "sin", "q" : "chin", 
-   "!" : "dha", ":" : "zin", ";" : "waw", 
-   "," : "taamar", "n": "yaae", "b" :"aliflam",
-   "v" : "raa", "c" : "hamzawaw", "x": "hamza", 
-   "w" : "hamzayaa"," ": "kspace"
+ 
+var keys_map = {
+      "alif":'ا', 
+      "baa":'ب', 
+      "taa" :'ت', 
+      "thaa" :'ث', 
+      "djim" :'ج', 
+      "7a":'ح', 
+      "5a":'خ', 
+      "dal":'د', 
+      "dhal":'ذ', 
+      "ray":'ر', 
+      "zay":'ز', 
+      "sin":'س', 
+      "chin":'ش', 
+      "sad": 'ص', 
+      "dad": 'ض', 
+      "tta": 'ط', 
+      "ddha": 'ظ', 
+      "3in":  'ع', 
+      "ghin":  'غ', 
+      "pha": 'ف', 
+      "9af": 'ق', 
+      "kaf": 'ك', 
+      "lam": 'ل', 
+      "mim":"م", 
+      "noun":'ن' , 
+      "ha":'ه', 
+      "waw":'و', 
+      "ya":'ي', 
+      "aliflam": 'خ',
+      "raa": 'س', 
+      "aliflam":'ﻻ',
+      "tamaar":'ة',
+      "alifya":'ى',
+      "hamzawaw":'ؤ', 
+      "hamza": 'ء', 
+      "hamzayaa":'ئ',
+      "fassila":",", 
+      "soual":'؟',
+      "kspace":"فراغ",
+      "fassila":'،',
+      "no9ta":'.'
 };
 
-var key_ids= [
-      "dal", "jim", "7a", "5a", "ha", 
-      "3in", "ghin", "faa", "9af", "tha", 
-      "dda", "sad", "dhal", "tta", "kaf", 
-      "mim", "noun", "taa", "alif", "lam", 
-      "baa", "yaa", "sin", "chin", "dha", 
-      "zin", "waw", "taamar", "yaae", "aliflam",
-      "raa", "hamzawaw", "hamza", "hamzayaa",
-      "fassila", "kspace"
-];
- 
+var azerty_map = {
+      "²":'dhal',
+      "a":'dad', 
+      "z":'sad', 
+      "e" :'thaa', 
+      "r" :'9af', 
+      "t" :'pha', 
+      "y" :'ghin', 
+      "u":'3in', 
+      "i":'ha', 
+      "o":'5a', 
+      "p":'7a', 
+      "^":'djim', 
+      "$":'dal', 
+      "q":'chin', 
+      "s":'sin', 
+      "d": 'ya', 
+      "f": 'baa', 
+      "g": 'lam', 
+      "h": 'alif', 
+      "j":  'taa', 
+      "k":  'noun', 
+      "l": 'mim', 
+      "m": 'kaf', 
+      "ù": 'tta', 
+      "w":"hamzayaa", 
+      "x":'hamza' , 
+      "c":'hamzawaw', 
+      "v":'ray', 
+      "b":'aliflam', 
+      "n": 'alifya',
+      ",": 'tamaar', 
+      ";":'waw',
+      ":":'zay',
+      "!":'ddha',
+      "?":'soual',
+      "kspace":" " 
+};
+
+var qwerty_map={
+      "`":'dhal',
+      "q":'dad', 
+      "w":'sad', 
+      "e" :'thaa', 
+      "r" :'9af', 
+      "t" :'pha', 
+      "y" :'ghin', 
+      "u":'3in', 
+      "i":'ha', 
+      "o":'5a', 
+      "p":'7a', 
+      "[":'djim', 
+      "]":'dal', 
+      "a":'chin', 
+      "s":'sin', 
+      "d": 'ya', 
+      "f": 'baa', 
+      "g": 'lam', 
+      "h": 'alif', 
+      "j":  'taa', 
+      "k":  'noun', 
+      "l": 'mim', 
+      ";": 'kaf', 
+      "'": 'tta', 
+      "z":"hamzayaa", 
+      "x":'hamza' , 
+      "c":'hamzawaw', 
+      "v":'ray', 
+      "b":'aliflam', 
+      "n": 'alifya',
+      "m": 'tamaar', 
+      ",":'waw',
+      ".":'zay',
+      "/":'ddha',
+      "kspace":" " 
+};
+
+var translit_map = {
+ 'd'  : "dal",
+ '5'  : "5a",
+ '7'  :"7a",
+ 'j'  :"djim",
+ 'g'  :"djim",
+ 'th' :"thaa",
+ 't'  :"taa",
+ 'b'  :"baa",
+ 'a'  :"alif",
+ 'gh' :"ghin",
+ '3'  :"3in",
+ 'dh' :"ddha",
+ 't'  :"tta",
+ 'dd' :"dad",
+ 's'  :"sad",
+ 'sh' :"chin",
+ 'ch' :"chin",
+ 'c'  :"sin",
+ 'z'  :"zay",
+ 'r'  :"ray", 
+ 'y'  :"ya", 
+ 'w'  :"waw",
+ 'h'  :"ha",
+ 'n'  :"noun",
+ 'm'  :"mim",
+ 'l'  :"lam",
+ 'k'  :"kaf",
+ '9'  :"9af",
+ 'f'  :"pha",
+ ' '  :"kspace",
+ '.'  :"no9ta",
+ ','  :"fassila"
+};
+
 function canvas_write(key_id){
     var $canvas = $("#tcanvas");
     var curValue = $canvas.val();
-    var newValue = curValue + $("#"+key_id).text();
-    $canvas.val(newValue); 
+    var newValue;
+    $("."+key_id).trigger("fmouseenter");
+    if (key_id.includes("koriginal")){
+       key_id = key_id.substring(10, key_id.length);
+    }
+    if (key_id == 'erase'){
+        newValue = curValue.substring(0, curValue.length - 1); 
+    }else if (key_id == 'kspace'){
+        newValue = curValue + " ";
+    }else{
+        newValue = curValue + keys_map[key_id];
+    }
+    $canvas.val(newValue);
+    old_text_content = newValue; 
 }
-   
-$(document).ready(function() {
-    $("#tcanvas").on("input", function(){
-       var curVal = $(this).val();
-       lastChar = curVal[curVal.length - 1];
-       var key_button =keys_map[lastChar];
-       if (key_button != null){
-          $("#"+key_button).trigger("mouseenter");
-          console.log("executed "+ $("#"+key_button).attr('class'));
-       }
-    });
-    
-    for (var i=0; i< key_ids.length; i++)
+  
+function map_keyboard(){
+    for (var k in keys_map) { 
+      $('p.koriginal.'+k).text(keys_map[k]);  
+    }
+}
+
+function reset_checkboxes(){
+   $("translinput").attr("checked",false);
+   $("layout-switch").attr("checked",false);
+}
+
+function make_google_transliteration(control){
+    var options = {
+        sourceLanguage:
+            google.elements.transliteration.LanguageCode.ENGLISH,
+        destinationLanguage:
+            [google.elements.transliteration.LanguageCode.ARABIC],
+        transliterationEnabled: false
+    };
+    // Create an instance on TransliterationControl with the required
+    // options.
+    control =
+        new google.elements.transliteration.TransliterationControl(options);
+
+    // Enable transliteration in the textbox with id
+    // 'transliterateTextarea'.
+    control.makeTransliteratable(['tcanvas']);
+    return control
+}
+
+function toggle_transliteration(control, state){
+   if (state == true) {
+   }else{
+       control.disableTransliteration();
+   }
+} 
+
+function set_hover_effects(){
+    //set hover effects on keys
+    for (var k in keys_map)
     {
-        console.log(key_ids[i]);
-        $('#'+key_ids[i]).on("mouseenter", function(){
-            console.log("hover triggered");
+        $('.'+k).on("fmouseenter mouseenter", function(){
             $(this).css({"background":"#36367d","color":"white"}); 
-            $(this).delay(400).queue(function (next) {
-                 $(this).css({"background":"white","color":"black"}); 
-                 next();
-            });
+            $(this).delay(300).queue(function (next) {
+               $(this).css({"background":"white","color":"black"}); 
+                       next();
+                  });
         });
     }
+    $('.erase').on("fmouseenter mouseenter", function(){
+            $(this).css({"background":"darkred","color":"white"}); 
+            $(this).delay(300).queue(function (next) {
+                $(this).css({"background":"salmon","color":"black"}); 
+                next();
+            });
+    });
+}
+
+
+var old_text_content = "";
+$(document).ready(function() {
+    map_keyboard();
+    reset_checkboxes();    
+
+    var control_translit;
+    control_translit = make_google_transliteration(control_translit);
+
+    set_hover_effects();
+
+    $("#tcanvas").on("input", function(){
+       var curVal = $(this).val();
+       if (curVal.length > old_text_content.length)
+       {
+           lastChar = curVal[curVal.length - 1];
+           var key_id;
+           if ($("#translinput").is(":checked")){
+                   key_id = translit_map[lastChar];
+           }else{
+               if ($("#layout-switch").is(":checked")) {
+                   key_id = qwerty_map[lastChar];
+               }else{
+                   key_id = azerty_map[lastChar]; 
+               }
+           }
+           if (key_id != null){
+              $("."+key_id).trigger("fmouseenter");
+              if (!$("#translinput").is(":checked")){
+                  curVal = old_text_content + keys_map[key_id];
+                  $(this).val(curVal);
+              }
+           }else if (lastChar == ' '){
+              $(".kspace").trigger("fmouseenter");
+           }
+       }else{
+           $(".erase").trigger("fmouseenter");
+       }
+       old_text_content = curVal;
+    });
+
+    $('#translinput').change( function(){
+          if ($(this).is(':checked')){
+              $('.translbox').css({"background":"#2875bd", "color":"white"});
+              $('#karab-translit').attr('hidden',false);
+              $('#karab').attr('hidden',true);
+              control_translit.enableTransliteration();
+          }else{
+              $('.translbox').css({"background":"lightgray", "color":"black"});
+              $('#karab').attr('hidden',false);
+              $('#karab-translit').attr('hidden',true);
+              control_translit.disableTransliteration();
+          }
+    });
+    $("#layout-switch").on('click', function(){
+          if ($(this).is(':checked')){
+              $('.switch-on-p').css({"color":"#2875bd"}); 
+              $('.switch-off-p').css({"color":"darkgray"}); 
+          }else{
+              $('.switch-on-p').css({"color":"darkgray"}); 
+              $('.switch-off-p').css({"color":"salmon"}); 
+          }
+    });
 });
 {% endblock %}
 
 {% block main_content %}
+    <textarea id="tcanvas" rows="5" cols="65"></textarea> 
+    <div class="keyboard-container">
+      <div class="keyboard-options">
+          <div class="translbox">
+            <label for=translinput">نسخ لغوي</label>
+            <input type="checkbox"  id="translinput" >
+          </div>
+          <p>|<p>
+             <p class="switch-off-p">azerty</p>
+          <label class="switch">
+             <input id="layout-switch" type="checkbox">
+             <span class="slider round"></span>
+          </label>
+             <p class="switch-on-p">qwerty</p>
+      </div>
+      <div class="lwm" id="karab" >
+         <p class="koriginal dad" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal sad" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal thaa" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal 9af" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal pha" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal ghin" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal 3in" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal ha" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal 5a" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal 7a" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal djim" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal dal" onClick="canvas_write(this.className)" ></p>
+         <br>
+         <p class="koriginal chin" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal sin" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal ya" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal baa" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal lam" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal alif" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal taa" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal noun" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal mim" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal kaf" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal tta" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal dhal" onClick="canvas_write(this.className)" ></p>
+         <br>
+         <p class="koriginal hamzayaa" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal hamza" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal hamzawaw" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal ray" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal aliflam" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal alifya" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal tamaar" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal waw" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal zay" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal ddha" onClick="canvas_write(this.className)" ></p>
+         <br>
+         <p class="koriginal erase" onClick="canvas_write(this.className)" ><i class="fas fa-eraser"></i>.</p>
+         <p class="koriginal fassila" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal kspace" onClick="canvas_write(this.className)" ></p>
+         <p class="koriginal no9ta" onClick="canvas_write(this.className)" >.</p> 
+       </div>	
 
-    <textarea id="tcanvas" rows="10" cols="65"></textarea> 
-    <div class="lwm" >
-      <a id="dal" onClick="canvas_write(this.id)" href="#">د</a>
-      <a id="jim" onClick="canvas_write(this.id)" href="#">ج</a>
-      <a id="7a" onClick="canvas_write(this.id)" href="#">ح</a>
-      <a id="5a" onClick="canvas_write(this.id)" href="#">خ</a>
-      <a id="ha" onClick="canvas_write(this.id)" href="#">ه</a>
-      <a id="3in" onClick="canvas_write(this.id)" href="#">ع</a>
-      <a id="ghin" onClick="canvas_write(this.id)" href="#">غ</a>
-      <a id="faa" onClick="canvas_write(this.id)" href="#">ف</a>
-      <a id="9af" onClick="canvas_write(this.id)" href="#">ق</a>
-      <a id="tha" onClick="canvas_write(this.id)" href="#">ث</a>
-      <a id="dda" onClick="canvas_write(this.id)" href="#">ض</a>
-      <a id="sad" onClick="canvas_write(this.id)" href="#">ص</a>
-      <br>
-      <br>
-      <a id="dhal" onClick="canvas_write(this.id)" href="#">ذ</a>
-      <a id="tta" onClick="canvas_write(this.id)" href="#">ط</a>
-      <a id="kaf" onClick="canvas_write(this.id)" href="#">ك</a>
-      <a id="mim" onClick="canvas_write(this.id)" href="#">م</a>
-      <a id="noun" onClick="canvas_write(this.id)" href="#">ن</a>
-      <a id="taa" onClick="canvas_write(this.id)" href="#">ت</a>
-      <a id="alif" onClick="canvas_write(this.id)" href="#">ا</a>
-      <a id="lam" onClick="canvas_write(this.id)" href="#">ل</a>
-      <a id="baa" onClick="canvas_write(this.id)" href="#">ب</a>
-      <a id="yaa" onClick="canvas_write(this.id)" href="#">ي</a>
-      <a id="sin" onClick="canvas_write(this.id)" href="#">س</a>
-      <a id="chin" onClick="canvas_write(this.id)" href="#">ش</a>
-      <br>
-      <br>
-      <a id="dha" onClick="canvas_write(this.id)" href="#">ظ</a>
-      <a id="zin" onClick="canvas_write(this.id)" href="#">ز</a>
-      <a id="waw" onClick="canvas_write(this.id)" href="#">و</a>
-      <a id="taamar" onClick="canvas_write(this.id)" href="#">ة</a>
-      <a id="yaae" onClick="canvas_write(this.id)" href="#">ى</a>
-      <a id="aliflam" onClick="canvas_write(this.id)" href="#">ﻻ</a>
-      <a id="raa" onClick="canvas_write(this.id)" href="#">ر</a>
-      <a id="hamzawaw" onClick="canvas_write(this.id)" href="#">ؤ</a>
-      <a id="hamza" onClick="canvas_write(this.id)" href="#">ء</a>
-      <a id="hamzayaa" onClick="canvas_write(this.id)" href="#">ئ</a>
-      <br>
-      <br>
-      <a id="erase" onClick="canvas_write(this.id)" href="#"><i class="fas fa-eraser"></i></a>
-      <a id="fassila" onClick="canvas_write(this.id)" href="#">,</a>
-      <a id="kspace" onClick="canvas_write(this.id)" href="#"> </a>
-      <a id="no9ta" onClick="canvas_write(this.id)" href="#">.</a>
-      
-    </div>	
+       <div  class="spk" id="karab-translit" hidden>
+         <p class="dhal" onClick="canvas_write(this.className)" >dh&nbsp(ذ)</p>
+         <p class="dal" onClick="canvas_write(this.className)" >d&nbsp(د)</p>
+         <p class="5a" onClick="canvas_write(this.className)" >5&nbsp(خ)</p>
+         <p class="7a" onClick="canvas_write(this.className)" >7&nbsp(ح)</p>
+         <p class="djim" onClick="canvas_write(this.className)" >j-g&nbsp(ج)</p>
+         <p class="thaa" onClick="canvas_write(this.className)" >th&nbsp(ث)</p>
+         <p class="taa" onClick="canvas_write(this.className)" >t&nbsp(ت)</p>
+         <p class="baa" onClick="canvas_write(this.className)" >b&nbsp(ب)</p>
+         <p class="alif" onClick="canvas_write(this.className)" >a&nbsp(ا)</p>
+         <br>
+         <p class="ghin" onClick="canvas_write(this.className)" >gh (غ)</p>
+         <p class="3in" onClick="canvas_write(this.className)" >3 (ع)</p>
+         <p class="ddha" onClick="canvas_write(this.className)" >dh (ظ)</p>
+         <p class="tta" onClick="canvas_write(this.className)" >t (ط)</p>
+         <p class="dad" onClick="canvas_write(this.className)" >dd (ص)</p>
+         <p class="sad" onClick="canvas_write(this.className)" >s (ض)</p>
+         <p class="chin" onClick="canvas_write(this.className)" >sh (ش)</p>
+         <p class="sin" onClick="canvas_write(this.className)" >c (س)</p>
+         <p class="zay" onClick="canvas_write(this.className)" >z (ز)</p>
+         <p class="ray" onClick="canvas_write(this.className)" >r (ر)</p>
+         <br>
+         <p class="ya" onClick="canvas_write(this.className)" >y (ي)</p>
+         <p class="waw" onClick="canvas_write(this.className)" >w (و)</p>
+         <p class="ha" onClick="canvas_write(this.className)" >h (ه)</p>
+         <p class="noun" onClick="canvas_write(this.className)" >n (ن)</p>
+         <p class="mim" onClick="canvas_write(this.className)" >m (م)</p>
+         <p class="lam" onClick="canvas_write(this.className)" >l (ل)</p>
+         <p class="kaf" onClick="canvas_write(this.className)" >k (ك)</p>
+         <p class="9af" onClick="canvas_write(this.className)" >9 (ق)</p>
+         <p class="pha" onClick="canvas_write(this.className)" >f (ف)</p>
+         <br>
+         <p class="erase" onClick="canvas_write(this.className)" ><i class="fas fa-eraser"></i>.</p>
+         <p class="fassila" onClick="canvas_write(this.className)" >،</p>
+         <p class="kspace" onClick="canvas_write(this.className)" >فراغ</p>
+         <p class="no9ta" onClick="canvas_write(this.className)" >.</p> 
+       </div>
+
+     </div>	
+
 {% endblock %}
       
 
