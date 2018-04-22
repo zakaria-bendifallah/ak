@@ -9,7 +9,7 @@
 }
 
 body{
-  background:lightgrey;
+  background:white;
   font-size: 16px;
   font-weight: 400;
   text-rendering: optimizeLegibility;  
@@ -46,9 +46,16 @@ div.head-logo{
   position:relative;
   float:right;
   padding:0 0.5% 0 0.5%;
-  margin-top:0.25%;
+  margin-top:0.5%;
   margin-right:0.25%;
-  border-radius:8px;
+  border-radius:4px;
+}
+
+.head-banner img{
+  height:2.25em;
+  float:right;
+  margin-top:0.5%;
+  margin-right:0.5%;
 }
 
 .core-content{
@@ -80,8 +87,55 @@ div.head-logo{
 
 .left-tab{
   width:35%:  
-
 } 
+
+.lateral-tab{
+  background:#003366;
+  width:13%;
+  height:70%;
+  position:fixed;
+  top:20%;
+  right:1%;
+  padding-top:5%;
+  /*padding-bottom:30%;*/
+  text-align:right;
+  z-index:300;
+  border:solid 1px #001a33;
+  box-shadow: -5px 1px 5px 1px rgba(0, 0, 0, 15%);
+  border-radius:8px;
+}
+
+.lateral-tab a{
+  display:block;
+  width:100%;
+  background:#e7e7e7;
+  padding-right:2px;
+  margin:1px 0px 0px 0px; 
+  color:black;
+  text-decoration:none;
+  
+}
+
+.lateral-tab a:hover{
+  /*background:#2875bd;*/   
+  color:#2875bd;
+}
+
+.foot-banner{
+  background:#003366;
+  background-image: linear-gradient(#003366, #003566);
+  color:white;
+  background-size:cover;
+  position:fixed;
+  width:100%;
+  height:5%;
+  bottom:0px;
+  z-index:300;
+  text-align:right;
+  padding-right:5px;
+  text-transform:uppercase;
+  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 20%); 
+}
 
 /****** keyboard options *****************/
 .keyboard-options{
@@ -240,6 +294,14 @@ input:checked + .slider:before {
   color:white;
 }
 
+.lwm p.shift{
+  background:salmon;
+}
+.lwm p.shift:hover{
+  background:darkred;
+  color:white;
+}
+
 .lwm p:hover{ 
   background:#36367d;
   color:white; 
@@ -270,62 +332,50 @@ input:checked + .slider:before {
   border: solid 1px lightgray;
 }
 
-.lateral-tab{
-  background:#94b4d1;
-  width:15%;
-  height:100%;
-  position:fixed;
-  padding-top:15%;
-  padding-bottom:30%;
-  text-align:right;
-  right:0;
-  z-index:300;
-  border:solid 1px #e7e7e7;
-  box-shadow: -5px 1px 5px 1px rgba(0, 0, 0, 15%);
-}
-
-.lateral-tab a{
-  display:block;
-  width:100%;
-  background:#e7e7e7;
-  padding-right:2px;
-  margin:1px 0px 0px 0px; 
-  color:black;
-  text-decoration:none;
-  
-}
-
-.lateral-tab a:hover{
-  background:#2875bd;   
-  color:white;
-  font-weight:bold;
-  font:bold;
-}
-
-.foot-banner{
-  background:#003366;
-  background-image: linear-gradient(#003366, #003566);
-  color:white;
-  background-size:cover;
-  position:fixed;
-  width:100%;
-  height:5%;
-  bottom:0px;
-  z-index:300;
-  text-align:right;
-  padding-right:5px;
-  text-transform:uppercase;
-  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 20%); 
-}
 
 .big-an {
   font-size:100;
   color:darkblue;
 }
 
+/***** messages styles *********/
+.ktitle{
+  background:darkred; 
+  color:white;
+  width:20%;
+  text-align:center;
+  float:right;
+  /*margin-left:40%;*/
+  margin-bottom:10%; 
+  border:1px solid black; 
+  border-radius:5px 0  0  5px ;   
+}
+
+.titlelocal{
+  background:#003366;  
+}
+
+.kmargin{
+  margin-top:10%;
+  margin-right:5%;
+}
+
+.message-container{
+  width:90%; 
+  float:right;
+  background:lightblue;
+  border:1px solid lightblue; 
+}
+
+
 /******* contact page styles****/
+.kontact-container{
+  float:right;
+}
+
 .kontact-form{
-  margin-bottom:10%
+  margin-bottom:10%;
+  width:100%;
 }
 
 .kontact-label{
@@ -337,18 +387,11 @@ input:checked + .slider:before {
 .kontact-form input,textarea{
   direction:rtl;
   width:80%;
-  left:0;
+  right:0;
   padding:8px;  
   border: 1px solid #ccc; 
 }
 
-#ksubmit{
-  width:10%;
-  display:block;
-  margin-left:45%;
-  margin-top:5%;
-  font:bold;
-}
 
 /******** social media links *********/
 #socialm-links{
@@ -373,3 +416,18 @@ input:checked + .slider:before {
   color:red;   
 }
 
+/********* global styles: titles, ... ****/
+
+
+#ksubmit{
+  width:20%;
+  display:block;
+  margin-left:45%;
+  margin-top:5%;
+  font:bold;
+}
+
+#ksubmit:hover{
+  color:darkred;
+  border:2px solid darkred;
+}

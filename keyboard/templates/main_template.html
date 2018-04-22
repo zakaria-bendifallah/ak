@@ -6,8 +6,15 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
     <link rel="stylesheet" type="text/css" href={% static "pstyles.css" %}>
     <link rel="shortcut icon" type="image/x-icon" href={% static "favicon.ico" %} />
-    <!--<link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet"> -->
-    <!--<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117523776-1"></script>
+    <script>
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){dataLayer.push(arguments);}
+       gtag('js', new Date());
+
+       gtag('config', 'UA-117523776-1');
+    </script>
 
     <!--<script src="https://use.fontawesome.com/fd5d71e4bc.js"></script>-->
     <!--<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>-->
@@ -27,7 +34,7 @@
         {% endblock %}
     </script>
 
-    <title>arabic keyboard | لوحة المفاتيح</title>
+    <title>لاقي عربي | Arabic Finder: Arabic Keyboard and Translation</title>
     <meta name="viewport" content="initial-scale=1.0,  maximum-scale=1.0, width=device-width">
   </head>
   <body>
@@ -36,17 +43,18 @@
            <div class="head-logo">    
                <h3>لاقي عربي</h3>
           </div>
+          <a href="www.arabicfinder.com"><img src={% static "finder_logo.png" %}></a>
           <div id="socialm-links">
-              <a href=""><i class="fab fa-twitter-square fa-2x"></i></a>
-              <a href=""> <i class="fab fa-facebook-square fa-2x"></i></a>
+              <a href="https://twitter.com/ArabicFinder"><i class="fab fa-twitter-square fa-2x"></i></a>
+              <!-- <a href=""> <i class="fab fa-facebook-square fa-2x"></i></a>-->
               <p>&nbsp  تابعونا على</p>
           </div>
        </div>
        <div class="core-content">
           <div class="lateral-tab">
-            <a href="">لوحة المفاتيح &nbsp<i class="fas fa-keyboard"></i></a> 
-            <a href=""> &nbsp<i class="fas fa-keyboard"></i></a> 
-            <a href="">تواصلو معنا &nbsp <i class="fas fa-users"></i></a> 
+            <a href="index">لوحة المفاتيح &nbsp<i class="fas fa-keyboard"></i></a> 
+            <a href="translate">ترجمة &nbsp<i class="far fa-comment-alt"></i></a> 
+            <a href="contact">تواصلو معنا &nbsp <i class="fas fa-users"></i></a> 
           </div>
           <div class="spacer">
              <p> </p>
